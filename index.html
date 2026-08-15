@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Anniversary 💗</title>
+<link rel="icon" type="image/jpeg" href="logo.jfif">
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+background:#f7d6dc;
+font-family:'Fredoka',sans-serif;
+overflow-x:hidden;
+overflow-y:auto;
+}
+
+.page{
+  display:none;
+  width:100%;
+  height:100vh;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  text-align:center;
+}
+
+.birthday-letter{
+max-height:80vh;
+overflow-y:auto;
+}
+
+.page.active{
+  display:flex;
+}
+
+.card{
+  max-width:420px;
+  width:100%;
+}
+
+.title{
+  font-family:'Baloo 2',cursive;
+  color:#a62d58;
+  font-size:2rem;
+  margin-bottom:15px;
+  line-height:1.3;
+}
+
+.text{
+  color:#b15f7b;
+  line-height:1.8;
+  margin-bottom:25px;
+}
+
+.btn{
+  background:#980038;
+  color:white;
+  border:none;
+  padding:14px 35px;
+  border-radius:999px;
+  cursor:pointer;
+  font-family:'Fredoka',sans-serif;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+}
+
+.calendar-img{
+  width:260px;
+  display:block;
+  margin:0 auto 20px;
+  animation:float 3s infinite ease-in-out;
+}
+
+.character-img{
+  width:180px;
+  display:block;
+  margin:0 auto 20px;
+  animation:float 3s infinite ease-in-out;
+}
+
+.envelope-img{
+  width:220px;
+  display:block;
+  margin:0 auto 20px;
+  animation:float 3s infinite ease-in-out;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.gallery img{
+  width:100%;
+  aspect-ratio:2/4;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 8px 20px rgba(166,45,88,0.12);
+}
+
+.letter{
+  background:white;
+  padding:20px;
+  border-radius:20px;
+  text-align:left;
+  max-height:300px;
+  overflow:auto;
+  color:#8c4a65;
+  line-height:2;
+}
+
+.hearts{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.heart{
+  position:absolute;
+  animation:fall linear forwards;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(0);}
+}
+
+@keyframes fall{
+  from{
+    transform:translateY(-50px);
+    opacity:1;
+  }
+  to{
+    transform:translateY(100vh);
+    opacity:0;
+  }
+}
+
+.birthday-letter{
+width:100%;
+max-width:700px;
+padding:20px;
+}
+
+.final-title{
+font-family:'Baloo 2',cursive;
+font-size:2rem;
+line-height:1.4;
+color:#a62d58;
+margin-bottom:30px;
+}
+
+.letter-content{
+border-left:4px solid #d67c9d;
+padding-left:20px;
+text-align:left;
+}
+
+#typing-text{
+white-space:pre-line;
+font-size:1rem;
+line-height:2;
+color:#8c4a65;
+}
+
+.cursor{
+animation:blink .8s infinite;
+}
+
+@keyframes blink{
+50%{
+opacity:0;
+}
+}
+
+.counter-wrapper{
+  margin:0 auto 20px;
+  width:280px;
+  animation:float 3s infinite ease-in-out;
+}
+
+.counter-card{
+  background:linear-gradient(145deg,#ffffff,#ffe4ec);
+  border-radius:30px;
+  padding:25px 20px;
+  box-shadow:0 15px 40px rgba(166,45,88,0.15),
+             inset 0 2px 0 rgba(255,255,255,0.8);
+  border:2px solid rgba(255,182,193,0.5);
+  position:relative;
+  overflow:hidden;
+}
+
+.counter-card::before{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle,rgba(255,105,180,0.08) 0%,transparent 70%);
+  animation:shine 4s infinite ease-in-out;
+}
+
+@keyframes shine{
+  0%,100%{transform:translate(-30%,-30%);}
+  50%{transform:translate(30%,30%);}
+}
+
+.counter-label{
+  font-family:'Baloo 2',cursive;
+  color:#d67c9d;
+  font-size:0.85rem;
+  font-weight:600;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:12px;
+  position:relative;
+  z-index:1;
+}
+
+.counter-days{
+  font-family:'Baloo 2',cursive;
+  font-size:4.5rem;
+  font-weight:800;
+  line-height:1;
+  background:linear-gradient(135deg,#a62d58 0%,#d67c9d 50%,#ff6b9d 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  position:relative;
+  z-index:1;
+  filter:drop-shadow(0 2px 8px rgba(166,45,88,0.2));
+}
+
+.counter-days-text{
+  font-family:'Fredoka',sans-serif;
+  color:#a62d58;
+  font-size:1rem;
+  font-weight:600;
+  margin-top:5px;
+  position:relative;
+  z-index:1;
+}
+
+.counter-sub{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:18px;
+  position:relative;
+  z-index:1;
+}
+
+.counter-sub-item{
+  flex:1;
+  background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(10px);
+  border-radius:16px;
+  padding:10px 5px;
+  border:1px solid rgba(214,124,157,0.2);
+}
+
+.counter-sub-num{
+  font-family:'Baloo 2',cursive;
+  font-size:1.4rem;
+  font-weight:700;
+  color:#a62d58;
+  line-height:1;
+}
+
+.counter-sub-label{
+  font-size:0.65rem;
+  color:#b15f7b;
+  font-weight:500;
+  margin-top:3px;
+  letter-spacing:0.5px;
+}
+
+.counter-hearts{
+  position:absolute;
+  top:8px;
+  left:0;
+  right:0;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  font-size:0.7rem;
+  z-index:1;
+}
+
+.counter-date{
+  margin-top:14px;
+  font-size:0.72rem;
+  color:#d67c9d;
+  font-weight:500;
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+}
+
+.counter-date::before,
+.counter-date::after{
+  content:"";
+  width:20px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d67c9d,transparent);
+}
+
+</style>
+</head>
+<audio id="bgMusic" src="music.mp3" loop></audio>
+
+<body>
+
+<div class="hearts"></div>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <div class="card">
+
+    <img src="box.gif" class="calendar-img">
+
+    <button class="btn" onclick="nextPage()">
+      open <3
+    </button>
+
+  </div>
+</div>
+
+<!-- PAGE 2-->
+<div class="page">
+  <div class="card">
+
+    <div class="counter-wrapper">
+      <div class="counter-card">
+        <div class="counter-hearts">💗 🎀 💗</div>
+        <div class="counter-label">our love story</div>
+        <div class="counter-days" id="day-count">300</div>
+        <div class="counter-days-text">days together</div>
+        <div class="counter-sub">
+          <div class="counter-sub-item">
+            <div class="counter-sub-num" id="hour-count">00</div>
+            <div class="counter-sub-label">HRS</div>
+          </div>
+          <div class="counter-sub-item">
+            <div class="counter-sub-num" id="min-count">00</div>
+            <div class="counter-sub-label">MIN</div>
+          </div>
+          <div class="counter-sub-item">
+            <div class="counter-sub-num" id="sec-count">00</div>
+            <div class="counter-sub-label">SEC</div>
+          </div>
+        </div>
+        <div class="counter-date">
+          <span>✨ 20.10.2025 → forever ✨</span>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="title">
+      happy anniversary 300 days
+    </h1>
+
+  
+
+    <button class="btn" onclick="nextPage()">
+      tap <3
+    </button>
+
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="card">
+
+    <img src="icon4.gif" class="character-img">
+
+    <p class="text">
+      Thank you for every smile,
+      every laugh,
+      and every moment together.
+    </p>
+
+    <button class="btn" onclick="nextPage()">
+     ♡
+    </button>
+
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="card">
+
+    <img src="icon5.gif" class="character-img">
+
+    <h1 class="title">
+      300 ngày ùiiii!!
+    </h1>
+
+    <p class="text">
+    tụi mình đã trải qua nhiều chuyện, tiếng cười, nước mắt, những cái ôm, sự thấu hiểu dành cho nhau.
+    </p>
+
+    <button class="btn" onclick="nextPage()">
+      tap <3
+    </button>
+
+  </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="card">
+
+    <div class="gallery">
+      <img src="foto1.jpg">
+      <img src="foto2.jpg">
+      <img src="foto3.jpg">
+      <img src="foto4.jpg">
+    </div>
+
+    <button class="btn" onclick="nextPage()">
+    ♡
+    </button>
+
+  </div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="card">
+
+    <img src="amplop.gif" class="envelope-img">
+
+  
+
+    <button class="btn" onclick="nextPage()">
+      open
+    </button>
+
+  </div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+
+    <div class="birthday-letter">
+
+        <h1 class="final-title">
+            🎀 HAPPYY ANNIVERSARYY 🎀 
+             <br>
+            ₍˶ᵔ ᵕ ᵔ˶₎♡
+        </h1>
+
+    <div class="letter-content">
+<p id="typing-text"></p>
+</div>
+
+<br>
+
+<button class="btn" onclick="nextPage()">
+♡
+</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- PAGE 8 -->
+<div class="page">
+  <div class="card">
+
+    <img src="icon3.gif" class="character-img">
+
+    <p class="text">
+      Anh yêu em. Cục dàng của baaaa 
+    </p>
+
+  </div>
+</div>
+
+<script>
+const TIME_ZONE = "America/Los_Angeles";
+const startDate = new Date( "2025-10-20T00:00:00-07:00" );
+
+function padZero(n){
+  return n < 10 ? "0" + n : n;
+}
+
+function updateCounter(){
+  const now = new Date();
+  const diff = now.getTime() - startDate.getTime(); if (diff < 0) { document.getElementById("day-count").textContent = "0"; document.getElementById("hour-count").textContent = "00"; document.getElementById("min-count").textContent = "00"; document.getElementById("sec-count").textContent = "00"; return; } const totalDays = Math.floor( diff / (1000 * 60 * 60 * 24) ); const hours = Math.floor( (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) ); const minutes = Math.floor( (diff % (1000 * 60 * 60)) / (1000 * 60) ); const seconds = Math.floor( (diff % (1000 * 60)) / 1000 ); document.getElementById("day-count").textContent = totalDays; document.getElementById("hour-count").textContent = padZero(hours); document.getElementById("min-count").textContent = padZero(minutes); document.getElementById("sec-count").textContent = padZero(seconds); } updateCounter(); setInterval(updateCounter, 1000);
+
+
+
+const birthdayMessage = `Happy Anniversary 300 days 💗
+
+Anh rất vui vì giữa tùm lum người trên thế giới này, anh lại có cơ hội gặp được em. Từ 2 đứa lâu rồi không liên lạc, em lại trở thành một người quan trọng nhất đối với anh.
+
+Cảm ơn em vì đã cùng anh đi qua những ngày vui, những ngày bình thường, và cả những ngày mà hai đứa chẳng hiểu nổi nhau.
+
+Anh vẫn muốn người bên cạnh em trong những ngày sau này. 💗
+
+-- from má khăm bụng khăm của em 🧸`;
+
+let typingStarted = false;
+
+function startTyping(){
+
+if(typingStarted) return;
+
+typingStarted = true;
+
+const target =
+document.getElementById("typing-text");
+
+let i = 0;
+
+function type(){
+
+if(i < birthdayMessage.length){
+
+target.innerHTML =
+birthdayMessage.substring(0,i+1) +
+'<span class="cursor">|</span>';
+
+i++;
+
+setTimeout(type,20);
+
+}else{
+
+target.innerHTML =
+birthdayMessage;
+
+}
+
+}
+
+type();
+
+}
+
+let current = 0;
+const pages = document.querySelectorAll(".page");
+
+function nextPage(){
+
+  pages[current].classList.remove("active");
+
+  current++;
+
+  if(current >= pages.length){
+    current = pages.length - 1;
+  }
+
+  pages[current].classList.add("active");
+
+  if(current === 6){
+    setTimeout(startTyping,500);
+  }
+
+}
+
+const emojis = ["💗","🎀","🌹"];
+
+setInterval(()=>{
+
+  const heart = document.createElement("div");
+
+  heart.className = "heart";
+
+  heart.innerHTML =
+  emojis[Math.floor(Math.random()*emojis.length)];
+
+  heart.style.left =
+  Math.random()*100 + "vw";
+
+  heart.style.fontSize =
+  (15 + Math.random()*20) + "px";
+
+  heart.style.animationDuration =
+  (4 + Math.random()*4) + "s";
+
+  document
+  .querySelector(".hearts")
+  .appendChild(heart);
+
+  setTimeout(()=>{
+    heart.remove();
+  },8000);
+
+},300);
+
+</script>
+<script>
+  const bgMusic = document.getElementById("bgMusic");
+
+  bgMusic.volume = 0.3;
+
+  // Thử tự động phát
+  bgMusic.play().catch(() => {
+    // Trình duyệt có thể chặn autoplay.
+    // Nhạc sẽ được phát sau khi người dùng tương tác với trang.
+    document.addEventListener("click", () => {
+      bgMusic.play();
+    }, { once: true });
+  });
+</script>
+</body>
+</html>
+
